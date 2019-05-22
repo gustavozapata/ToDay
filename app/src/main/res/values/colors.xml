@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#1C1384</color>
     <color name="colorTitle">#FFF</color>
     <color name="colorAdd">#FFD400</color>
+    <color name="colorNoTasks">#3D2CFC</color>
+    <color name="colorFooter">#6C5AFA</color>
 </resources>

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ToDay</string>
     <string name="add_task">+</string>
+    <string name="no_tasks">Nothing to do.. It\'s time to relax!</string>
+    <string name="task_placeholder">task…</string>
+    <string name="gz_footer">GZ 2019</string>
+    <string name="complete">Complete</string>
 </resources>
