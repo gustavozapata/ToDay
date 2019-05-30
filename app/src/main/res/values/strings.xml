@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">ToDay</string>
-    <string name="add_task">+</string>
-    <string name="no_tasks">Nothing to do.. It\'s time to relax!</string>
-    <string name="task_placeholder">task…</string>
-    <string name="gz_footer">GZ 2019</string>
-    <string name="complete">Complete</string>
+    <string name="plus_sign">+</string>
+    <string name="footer">GZ 2019</string>
+
+    <!--TASKS-->
+    <string name="Tasks">Tasks</string>
+    <string name="tasks_msg">Tasks give a meaning to our lives.\nStart by creating one</string>
+    <string name="tasks_create"><u>+ Create a Task</u></string>
+
+    <!--LISTS-->
+    <string name="Lists">Lists</string>
+    <string name="lists_msg">Lists help organising the tasks by\ngrouping related tasks together</string>
+    <string name="lists_create"><u>+ Create a List</u></string>
+
+    <!--CATEGORIES-->
+    <string name="Categories">Categories</string>
+    <string name="Home"><u>Home</u></string>
+    <string name="Work"><u>Work</u></string>
+    <string name="Study"><u>Study</u></string>
+    <string name="Personal"><u>Personal</u></string>
 </resources>

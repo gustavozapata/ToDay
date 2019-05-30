@@ -3,15 +3,10 @@ package me.gustavozapata.today;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.View;
-import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     boolean isFirstComplete = true;
     List listDo;
     List listDone;
-    TextView text_notasks;
     TextView textView_complete;
     CheckBox checkBox;
     EditText input_task;
@@ -35,39 +29,38 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //LINK TO GUI COMPONENTS
-        TextView btn_add = (TextView) findViewById(R.id.btn_add);
-        text_notasks = (TextView) findViewById(R.id.textView_notasks);
-        textView_complete = (TextView) findViewById(R.id.textView_complete);
-        layoutTask = (LinearLayout) findViewById(R.id.layoutTask);
-        input_task = (EditText) findViewById(R.id.input_task);
-        checkBox = (CheckBox) findViewById(R.id.checkBox);
+//        TextView btn_add = (TextView) findViewById(R.id.btn_add);
+        textView_complete = findViewById(R.id.text_Tasks);
+//        layoutTask = (LinearLayout) findViewById(R.id.layoutTask);
+//        input_task = (EditText) findViewById(R.id.input_task);
+//        checkBox = (CheckBox) findViewById(R.id.checkBox);
 
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isFirstTask){
-                    isFirstTask = false;
-                    listDo = new List();
-                    text_notasks.setVisibility(View.INVISIBLE);
-                    layoutTask.setVisibility(View.VISIBLE);
-                    input_task.setFocusable(true);
-                    checkBox.setChecked(false);
-                }
+//        btn_add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(isFirstTask){
+//                    isFirstTask = false;
+//                    listDo = new List();
+//                    text_notasks.setVisibility(View.INVISIBLE);
+//                    layoutTask.setVisibility(View.VISIBLE);
+//                    input_task.setFocusable(true);
+//                    checkBox.setChecked(false);
+//                }
+//
+//                listDo.setTasks(new Task());
+//            }
+//        });
 
-                listDo.setTasks(new Task());
-            }
-        });
-
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                if(isFirstComplete){
-                    isFirstComplete = false;
-                    listDone = new List();
-                    textView_complete.setVisibility(View.VISIBLE);
-                    layoutTask.setTranslationY(100);
-                }
-            }
-        });
+//        checkBox.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v){
+//                if(isFirstComplete){
+//                    isFirstComplete = false;
+//                    listDone = new List();
+//                    textView_complete.setVisibility(View.VISIBLE);
+//                    layoutTask.setTranslationY(100);
+//                }
+//            }
+//        });
     }
 }
