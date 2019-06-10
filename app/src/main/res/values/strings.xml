@@ -19,4 +19,13 @@
     <string name="Work"><u>Work</u></string>
     <string name="Study"><u>Study</u></string>
     <string name="Personal"><u>Personal</u></string>
+
+    <!--POPUP-->
+    <string name="NewTask">New Task</string>
+    <string name="NewList">New List</string>
+    <string name="Create"><u>Create</u></string>
+    <string name="Cancel"><u>Cancel</u></string>
+    <string name="taskDecription">Task description</string>
+    <string name="listDecription">List description</string>
+    <string name="chooseCategory">Choose a category</string>
 </resources>

@@ -3,7 +3,10 @@
     <color name="colorPrimary">#2D21B6</color>
     <color name="colorPrimaryDark">#2115AE</color>
     <color name="blanco">#FFF</color>
+    <color name="negro">#000</color>
     <color name="amarillo">#FFD400</color>
     <color name="lila">#8B81FF</color>
+    <color name="lilaoscuro">#564BE2</color>
     <color name="verdeazul">#03D4FF</color>
+    <color name="azuloscuro">#13098A</color>
 </resources>

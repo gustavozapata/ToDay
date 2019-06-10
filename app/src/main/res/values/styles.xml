@@ -9,25 +9,24 @@
     </style>
 
     <style name="heading1">
-        <item name="android:textSize">37sp</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textColor">@color/blanco</item>
         <item name="fontFamily">@font/montserrat_black</item>
     </style>
 
     <style name="heading2">
-        <item name="android:textSize">31sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">@color/amarillo</item>
         <item name="fontFamily">@font/montserrat_black</item>
     </style>
 
     <style name="element">
-        <item name="android:textSize">21sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/blanco</item>
         <item name="fontFamily">@font/montserrat_black</item>
     </style>
 
     <style name="information">
-        <!--<item name="android:textSize">31sp</item>-->
         <item name="android:textColor">@color/lila</item>
         <item name="fontFamily">@font/montserrat_mediumitalic</item>
     </style>
@@ -38,12 +37,24 @@
         <item name="fontFamily">@font/montserrat_black</item>
     </style>
 
+    <style name="placeholder">
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+    </style>
+
+    <style name="option">
+        <item name="android:textSize">13sp</item>
+        <item name="android:paddingLeft">5sp</item>
+        <item name="android:paddingRight">5sp</item>
+        <item name="android:textColor">@color/lila</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
     <style name="footer">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blanco</item>
         <item name="fontFamily">@font/montserrat_bold</item>
     </style>
-
 
     <!--OTHER ACTIVITY-->
     <style name="checkboxes">
