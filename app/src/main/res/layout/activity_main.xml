@@ -279,7 +279,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/popup"
-        android:layout_width="372dp"
+        android:layout_width="0dp"
         android:layout_height="280dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
@@ -375,7 +375,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/layout_categories"
-            android:layout_width="357dp"
+            android:layout_width="0dp"
             android:layout_height="39dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -394,11 +394,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginEnd="46dp"
-                android:layout_marginRight="46dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="@string/Home"
                 app:layout_constraintEnd_toStartOf="@+id/option_work"
-                app:layout_constraintHorizontal_bias="0.307"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -407,10 +407,14 @@
                 style="@style/option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="@string/Work"
                 app:layout_constraintEnd_toStartOf="@+id/option_study"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/option_home"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -418,21 +422,29 @@
                 style="@style/option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:text="@string/Personal"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/option_study"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/option_study"
                 style="@style/option"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
+                android:layout_width="52dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:text="@string/Study"
                 app:layout_constraintEnd_toStartOf="@+id/option_personal"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/option_work"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
