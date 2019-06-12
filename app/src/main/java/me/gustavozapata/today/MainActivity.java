@@ -1,5 +1,6 @@
 package me.gustavozapata.today;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
@@ -13,9 +14,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
-    boolean isFirstTask = true;
-    boolean isFirstComplete = true;
 
     TextView createNewTask;
     TextView createNewList;
@@ -34,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     TextView optionWork;
     TextView optionStudy;
     TextView optionPersonal;
+
+    //FOOTER
+    TextView textFooter;
 
 
     @Override
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         optionWork = findViewById(R.id.option_work);
         optionStudy = findViewById(R.id.option_study);
         optionPersonal = findViewById(R.id.option_personal);
+
+        textFooter = findViewById(R.id.text_footer);
 
         categories.add(optionHome);
         categories.add(optionWork);
@@ -126,33 +129,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btn_add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(isFirstTask){
-//                    isFirstTask = false;
-//                    listDo = new List();
-//                    text_notasks.setVisibility(View.INVISIBLE);
-//                    layoutTask.setVisibility(View.VISIBLE);
-//                    input_task.setFocusable(true);
-//                    checkBox.setChecked(false);
-//                }
-//
-//                listDo.setTasks(new Task());
-//            }
-//        });
-
-//        checkBox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v){
-//                if(isFirstComplete){
-//                    isFirstComplete = false;
-//                    listDone = new List();
-//                    textView_complete.setVisibility(View.VISIBLE);
-//                    layoutTask.setTranslationY(100);
-//                }
-//            }
-//        });
+        textFooter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MainActivity.this, TestingActivity.class));
+            }
+        });
     }
 
     public void createItem() {
