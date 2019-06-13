@@ -21,4 +21,7 @@ gradlew
 gradlew.bat
 settings.gradle
 
+# MY GITIGNORES
 /Local
+/app/src/main/java/me/gustavozapata/today/Todo.java
+

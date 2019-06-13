@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ToDay</string>
     <string name="plus_sign">+</string>
+    <string name="theme"><u>Theme</u></string>
     <string name="footer">GZ 2019</string>
 
     <!--TASKS-->

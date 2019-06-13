@@ -9,4 +9,13 @@
     <color name="lilaoscuro">#564BE2</color>
     <color name="verdeazul">#03D4FF</color>
     <color name="azuloscuro">#13098A</color>
+
+    <!--COLOR THEME - GALLINA-->
+    <color name="ga_background">#fff</color>
+    <color name="ga_backgrounddark">#EBEBEB</color>
+    <color name="ga_title">#44074E</color>
+    <color name="ga_headings">#2D21B6</color>
+    <color name="ga_items">#4D4D4D</color>
+    <color name="ga_actions">#FF644C</color>
+    <color name="ga_infobackground">#F8F8F8</color>
 </resources>

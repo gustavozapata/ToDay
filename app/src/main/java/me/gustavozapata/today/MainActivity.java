@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    TextView textTheme;
 
     TextView createNewTask;
     TextView createNewList;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //##### LINK XML TO JAVA #####
+        textTheme = findViewById(R.id.text_theme);
+
         createNewTask = findViewById(R.id.text_createNewTask);
         createNewList = findViewById(R.id.text_createNewList);
 
@@ -71,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         //##### EVENTS #####
+        textTheme.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TestingActivity.class));
+            }
+        });
+
         createNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         textFooter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, TestingActivity.class));
+                startActivity(new Intent(MainActivity.this, AirbnbActivity.class));
             }
         });
     }
