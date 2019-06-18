@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.App"
+        parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+
+    <style name="Theme.App.Main" parent="Base.Theme.App">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="primaryTextColor">@color/amarillo</item>
+    </style>
+
+    <style name="Theme.App.Gallina" parent="Base.Theme.App">
+        <item name="colorPrimary">@color/ga_actions</item>
+        <item name="colorPrimaryDark">@color/ga_title</item>
+        <item name="primaryTextColor">@color/ga_headings</item>
+    </style>
+</resources>

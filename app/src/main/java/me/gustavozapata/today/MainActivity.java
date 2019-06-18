@@ -1,6 +1,6 @@
 package me.gustavozapata.today;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    TextView textTheme;
+    TextView textSettings;
 
     TextView createNewTask;
     TextView createNewList;
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     //FOOTER
     TextView textFooter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //##### LINK XML TO JAVA #####
-        textTheme = findViewById(R.id.text_theme);
+        textSettings = findViewById(R.id.text_settings);
 
         createNewTask = findViewById(R.id.text_createNewTask);
         createNewList = findViewById(R.id.text_createNewList);
@@ -74,13 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         //##### EVENTS #####
-        textTheme.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TestingActivity.class));
-            }
-        });
-
         createNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        textFooter.setOnClickListener(new View.OnClickListener() {
+        textSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this, AirbnbActivity.class));
+                System.out.println("settings...");
             }
         });
     }
