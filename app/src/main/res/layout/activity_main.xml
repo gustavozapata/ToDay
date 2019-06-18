@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_black"
-        android:text="@string/theme"
+        android:text="@string/action_settings"
         android:textColor="@color/verdeazul"
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
