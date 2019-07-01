@@ -27,6 +27,10 @@
     <string name="Create"><u>Create</u></string>
     <string name="Cancel"><u>Cancel</u></string>
     <string name="taskDecription">Task description</string>
-    <string name="listDecription">List description</string>
+    <string name="listDecription">List name</string>
     <string name="chooseCategory">Choose a category</string>
+
+    <!--SETTINGS-->
+    <string name="settingsTitle">Settings</string>
+    <string name="Themes">Themes</string>
 </resources>

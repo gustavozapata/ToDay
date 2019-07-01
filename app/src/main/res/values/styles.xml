@@ -19,6 +19,12 @@
         <item name="fontFamily">@font/montserrat_black</item>
     </style>
 
+    <style name="task">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/blanco</item>
+        <item name="fontFamily">@font/montserrat_black</item>
+    </style>
+
     <style name="element">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/blanco</item>
