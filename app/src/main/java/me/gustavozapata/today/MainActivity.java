@@ -6,9 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -30,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     TextView newTaskInfo;
     ConstraintLayout constraintLayoutTasks;
 
+    CheckBox checkBoxSample;
     int marginY;
+    int layoutY;
 
     //POPUP
     Dialog popup;
@@ -75,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
         newTaskInfo = findViewById(R.id.text_msgTasks);
         constraintLayoutTasks = findViewById(R.id.constraintLayoutTasks);
 
+        checkBoxSample = findViewById(R.id.checkBoxSample);
         marginY = 0;
+        layoutY = 100;
 
 
         //POPUP
@@ -113,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
 
         //FOOTER
         textFooter = findViewById(R.id.text_footer);
+
+
+
+        //INITIALISE APP
+        //checkTasks();
 
 
 
@@ -229,6 +238,14 @@ public class MainActivity extends AppCompatActivity {
             tv.setTextColor(getResources().getColor(R.color.lila));
         }
     }
+    public void checkTasks(){
+        if(tasks.size() > 0){
+            constraintLayoutTasks.setBackgroundColor(Color.TRANSPARENT);
+            renderTasks();
+        } else {
+            theresNoTasks();
+        }
+    }
     public void createTask() {
         if(inputTask.getText().toString().equals("")){
             Toast.makeText(this, "A Task description is required", Toast.LENGTH_SHORT).show();
@@ -241,20 +258,38 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void renderTasks(){
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) constraintLayoutTasks.getLayoutParams();
         constraintLayoutTasks.removeAllViews();
         for(Task task : tasks){
             constraintLayoutTasks.addView(createTaskElements(task.getDescription()));
+            params.height = layoutY;
+            layoutY += 39;
+            constraintLayoutTasks.setLayoutParams(params);
         }
         marginY = 0;
-        System.out.println(tasks);
+        constraintLayoutTasks.setBackgroundColor(Color.TRANSPARENT);
     }
     public TextView createTaskElements(String taskTitle){
-        CheckBox task = new CheckBox(this);
+        CheckBox task = (CheckBox)getLayoutInflater().inflate(R.layout.checkbox_task, null);
+        task.setId(tasks.size());
         task.setText(taskTitle);
         task.setTranslationY(marginY);
-        marginY += 90;
-        task.setTextAppearance(this, R.style.task);
-        task.setPadding(5, -6, 0, 0);
+        marginY += 100;
         return task;
     }
+    public void theresNoTasks(){
+        constraintLayoutTasks.setBackgroundResource(R.drawable.shapes);
+        createNewTask.setVisibility(View.INVISIBLE);
+        createNewTaskTemp.setVisibility(View.VISIBLE);
+    }
 }
+
+
+//CODE MAY NEED
+//        ConstraintLayout.LayoutParams lparams = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
+//        task.setLayoutParams(lparams);
+//        ConstraintSet constraintSet = new ConstraintSet();
+//        constraintSet.clone(constraintLayoutTasks);
+//        constraintSet.connect(tasks.size(),ConstraintSet.LEFT,R.id.parent,ConstraintSet.RIGHT,0);
+//        constraintSet.connect(tasks.size(),ConstraintSet.TOP,R.id.parent,ConstraintSet.TOP,0);
+//        constraintSet.applyTo(constraintLayoutTasks);
