@@ -5,6 +5,12 @@ public class Task {
     private boolean isComplete;
     private String category;
 
+    public Task(String description, String category) {
+        this.description = description;
+        this.isComplete = false;
+        this.category = category;
+    }
+
     public String getDescription() {
         return description;
     }

@@ -12,18 +12,25 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    List<Task> tasks;
+    String taskCategory;
     TextView textSettings;
     TextView createNewTask;
+    TextView createNewTaskTemp;
     TextView createNewList;
     TextView newTaskInfo;
     ConstraintLayout constraintLayoutTasks;
+
+    int marginY;
 
     //POPUP
     Dialog popup;
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     TextView cancelPopup;
     TextView createPopup;
 
-    ArrayList<TextView> categories = new ArrayList<>();
+    ArrayList<TextView> categories;
     TextView optionHome;
     TextView optionWork;
     TextView optionStudy;
@@ -59,11 +66,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //##### LINK XML TO JAVA #####
+        tasks = new ArrayList<>();
+        taskCategory = null;
         textSettings = findViewById(R.id.text_settings);
-        createNewTask = findViewById(R.id.text_createNewTask);
+        createNewTask = findViewById(R.id.createNewTask);
+        createNewTaskTemp = findViewById(R.id.text_createNewTask);
         createNewList = findViewById(R.id.text_createNewList);
         newTaskInfo = findViewById(R.id.text_msgTasks);
         constraintLayoutTasks = findViewById(R.id.constraintLayoutTasks);
+
+        marginY = 0;
 
 
         //POPUP
@@ -82,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         optionStudy = popup.findViewById(R.id.option_study);
         optionPersonal = popup.findViewById(R.id.option_personal);
 
+        categories = new ArrayList<>();
         categories.add(optionHome);
         categories.add(optionWork);
         categories.add(optionStudy);
@@ -105,18 +118,23 @@ public class MainActivity extends AppCompatActivity {
 
         //##### EVENTS #####
         //POPUP
+        createNewTaskTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
         createNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popup.show();
-                inputTask.setText("");
-                cleanSelection();
+                showPopup();
             }
         });
         cancelPopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 popup.dismiss();
+                taskCategory = null;
             }
         });
         createPopup.setOnClickListener(new View.OnClickListener() {
@@ -129,24 +147,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectCategory(optionHome);
+                taskCategory = "Home";
             }
         });
         optionWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectCategory(optionWork);
+                taskCategory = "Work";
             }
         });
         optionStudy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectCategory(optionStudy);
+                taskCategory = "Study";
             }
         });
         optionPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectCategory(optionPersonal);
+                taskCategory = "Personal";
             }
         });
 
@@ -181,15 +203,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //NEWLIST POPUP
+    public void createList() {
+        if(inputList.getText().toString().equals("")){
+            Toast.makeText(this, "A List name is required", Toast.LENGTH_SHORT).show();
+        } else {
+            newlistPopup.dismiss();
+        }
+    }
 
     //POPUP
-    public void createTask() {
-        if(inputTask.getText().toString().equals("")){
-            Toast.makeText(this, "A Task description is required", Toast.LENGTH_SHORT).show();
-        } else {
-            popup.dismiss();
-            renderTask(inputTask.getText().toString());
-        }
+    public void showPopup() {
+        popup.show();
+        inputTask.setText("");
+        cleanSelection();
     }
     public void selectCategory(TextView option) {
         cleanSelection();
@@ -202,25 +229,32 @@ public class MainActivity extends AppCompatActivity {
             tv.setTextColor(getResources().getColor(R.color.lila));
         }
     }
-
-    //NEWLIST POPUP
-    public void createList() {
-        if(inputList.getText().toString().equals("")){
-            Toast.makeText(this, "A List name is required", Toast.LENGTH_SHORT).show();
+    public void createTask() {
+        if(inputTask.getText().toString().equals("")){
+            Toast.makeText(this, "A Task description is required", Toast.LENGTH_SHORT).show();
         } else {
-            newlistPopup.dismiss();
+            popup.dismiss();
+            createNewTask.setVisibility(View.VISIBLE);
+            tasks.add(new Task(inputTask.getText().toString(), taskCategory));
+            taskCategory = null;
+            renderTasks();
         }
     }
-
-    public void renderTask(String task) {
-        newTaskInfo.setVisibility(View.INVISIBLE);
-        constraintLayoutTasks.addView(createTaskViews(task));
+    public void renderTasks(){
+        constraintLayoutTasks.removeAllViews();
+        for(Task task : tasks){
+            constraintLayoutTasks.addView(createTaskElements(task.getDescription()));
+        }
+        marginY = 0;
+        System.out.println(tasks);
     }
-
-    public TextView createTaskViews(String task){
-        CheckBox checkBox = new CheckBox(this);
-        TextView textView = new TextView(new ContextThemeWrapper(this, R.style.task), null, 0);
-        textView.setText(task);
-        return textView;
+    public TextView createTaskElements(String taskTitle){
+        CheckBox task = new CheckBox(this);
+        task.setText(taskTitle);
+        task.setTranslationY(marginY);
+        marginY += 90;
+        task.setTextAppearance(this, R.style.task);
+        task.setPadding(5, -6, 0, 0);
+        return task;
     }
 }

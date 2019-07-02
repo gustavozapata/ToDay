@@ -8,6 +8,7 @@
     <string name="Tasks">Tasks</string>
     <string name="tasks_msg">Tasks give a meaning to our lives.\nStart by creating one</string>
     <string name="tasks_create"><u>+ Create a Task</u></string>
+    <string name="tasks_newtask"><u>+ New Task</u></string>
 
     <!--LISTS-->
     <string name="Lists">Lists</string>

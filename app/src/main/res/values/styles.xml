@@ -20,9 +20,9 @@
     </style>
 
     <style name="task">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/blanco</item>
-        <item name="fontFamily">@font/montserrat_black</item>
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
     </style>
 
     <style name="element">
