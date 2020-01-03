@@ -1,6 +1,7 @@
 package me.gustavozapata.today;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -10,9 +11,12 @@ import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     CheckBox checkBoxSample;
     int marginY;
     int layoutY;
+
+    //LISTVIEW
+    ListView listView;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> arrayList;
+
 
     //POPUP
     Dialog popup;
@@ -80,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
         checkBoxSample = findViewById(R.id.checkBoxSample);
         marginY = 0;
         layoutY = 100;
+
+        //LISTVIEW
+        listView = new ListView(this);
+//        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
+//        listView.setAdapter(adapter);
 
 
         //POPUP
@@ -144,12 +159,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 popup.dismiss();
                 taskCategory = null;
+                hideKeyboard();
             }
         });
         createPopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 createTask();
+                hideKeyboard();
             }
         });
         optionHome.setOnClickListener(new View.OnClickListener() {
@@ -225,7 +242,16 @@ public class MainActivity extends AppCompatActivity {
     public void showPopup() {
         popup.show();
         inputTask.setText("");
+        showKeyboard();
         cleanSelection();
+    }
+    public void showKeyboard(){
+        InputMethodManager inputMethodManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+    }
+    public void hideKeyboard(){
+        InputMethodManager inputMethodManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
     }
     public void selectCategory(TextView option) {
         cleanSelection();
@@ -252,29 +278,39 @@ public class MainActivity extends AppCompatActivity {
         } else {
             popup.dismiss();
             createNewTask.setVisibility(View.VISIBLE);
+
             tasks.add(new Task(inputTask.getText().toString(), taskCategory));
             taskCategory = null;
             renderTasks();
         }
     }
+
+    //CHECKPOINT
     public void renderTasks(){
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) constraintLayoutTasks.getLayoutParams();
         constraintLayoutTasks.removeAllViews();
         for(Task task : tasks){
-            constraintLayoutTasks.addView(createTaskElements(task.getDescription()));
+            constraintLayoutTasks.addView(createTaskElements(task, task.getDescription()));
             params.height = layoutY;
             layoutY += 39;
-            constraintLayoutTasks.setLayoutParams(params);
         }
         marginY = 0;
+        constraintLayoutTasks.setLayoutParams(params);
         constraintLayoutTasks.setBackgroundColor(Color.TRANSPARENT);
+
+        //LISTVIEW
+//        arrayList.add("hola");
+//        adapter.notifyDataSetChanged();
+//        constraintLayoutTasks.addView(listView);
     }
-    public TextView createTaskElements(String taskTitle){
+    //CHECKPOINT
+
+    public TextView createTaskElements(Task element, String taskTitle){
         CheckBox task = (CheckBox)getLayoutInflater().inflate(R.layout.checkbox_task, null);
         task.setId(tasks.size());
         task.setText(taskTitle);
         task.setTranslationY(marginY);
-        marginY += 100;
+        marginY += getResources().getDimensionPixelSize(R.dimen.task_move);
         return task;
     }
     public void theresNoTasks(){

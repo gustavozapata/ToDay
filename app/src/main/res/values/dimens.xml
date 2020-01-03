@@ -2,5 +2,6 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="task_margin">30dp</dimen>
+    <dimen name="task_margin">25dp</dimen>
+    <dimen name="task_move">33dp</dimen>
 </resources>
